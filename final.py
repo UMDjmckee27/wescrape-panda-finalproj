@@ -37,6 +37,16 @@ for row in individual_column_data:
     while len(row) < max_row_length:
         row.append("")
 
+#convert the data within the "list of lists" to numpy array
+np_data = np.array(individual_column_data)
+
+#creates dataframe from array
+df = pd.DataFrame(np_data)
+
+#save the dataframe to CSV 
+df.to_csv("billionaires_networth_2023.csv", index=False)
+print("CSV created successfully!")
+
 
 
 
