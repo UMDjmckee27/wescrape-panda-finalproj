@@ -12,6 +12,24 @@ getting_request = requests.get(wikipedia_page)
 #uses beautifulsoup to parse through the web page and gather data
 wiki_parse = BeautifulSoup(getting_request.content, "html")
 
+#searches and finds the tables on the page (2023 networths)
+tables = wiki_parse.find_all("table", {"class": "wikitable"})
+# Specifies that the second table or "index [1]" is being used
+data_for_2023 = tables[1]
+
+#where the data is stored. *acts as a list of lists*
+individual_column_data = []
+
+#gets data from the table and create the list of lists
+rows = data_for_2023.find_all("tr")
+#focusing on the individual rows
+for row in rows:
+    columns = row.find_all(["th", "td"])
+    #strips just the text
+    columns_data = [col.get_text(strip=True) for col in columns]
+    individual_column_data.append(columns_data)
+
+
 
 
 
