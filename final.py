@@ -44,8 +44,8 @@ np_data = np.array(individual_column_data)
 df = pd.DataFrame(np_data)
 
 #save the dataframe to CSV 
-df.to_csv("billionaires_networth_2023.csv", index=False)
-print("CSV created successfully!")
+df.to_csv("networths.csv", index=False)
+print("CSV created: check source control")
 
 
 
