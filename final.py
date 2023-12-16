@@ -29,6 +29,14 @@ for row in rows:
     columns_data = [col.get_text(strip=True) for col in columns]
     individual_column_data.append(columns_data)
 
+#gets rows max length to make data standardized 
+max_row_length = max(len(row) for row in individual_column_data)
+
+#targets shorter rows with empty strings to make them of equal length (for numpy)
+for row in individual_column_data:
+    while len(row) < max_row_length:
+        row.append("")
+
 
 
 
